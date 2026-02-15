@@ -1,0 +1,97 @@
+<footer class="footer section-footer page-width">
+  <div class="grid grid--4-col">
+    <!-- Clean Footer Layout -->
+    <div class="footer__content-block">
+      <h2 class="footer__heading h4">{{ section.settings.heading_1 }}</h2>
+      <div class="footer__text rte">
+        {{ section.settings.text_1 }}
+      </div>
+    </div>
+    
+    <div class="footer__content-block">
+      <h2 class="footer__heading h4">Quick Links</h2>
+       <ul class="footer__list-menu list-unstyled">
+        {%- for link in section.settings.menu.links -%}
+          <li>
+            <a href="{{ link.url }}" class="link link--text list-menu__item list-menu__item--link">
+              {{ link.title }}
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+
+    <div class="footer__content-block">
+      <h2 class="footer__heading h4">Contact Us</h2>
+      <p>{{ section.settings.contact_text }}</p>
+    </div>
+
+    <div class="footer__content-block">
+      <h2 class="footer__heading h4">Newsletter</h2>
+       <div class="footer__newsletter">
+         <!-- Simple input placeholder -->
+         <input type="email" placeholder="Your email" class="input-field">
+         <button class="button" style="margin-top: 10px;">Subscribe</button>
+       </div>
+    </div>
+  </div>
+  
+  <div class="footer__content-bottom">
+    <div class="footer__copyright caption">
+      <small class="copyright__content">&copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: routes.root_url }}</small>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--color-border);
+    margin-top: 60px;
+    background-color: #f9f9f9;
+  }
+  .footer__heading {
+    margin-bottom: 20px;
+    color: var(--color-heading);
+  }
+  .footer__list-menu li {
+    margin-bottom: 10px;
+  }
+  .footer__content-bottom {
+    border-top: 1px solid var(--color-border);
+    padding-top: 20px;
+    margin-top: 40px;
+    text-align: center;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading_1",
+      "label": "About Heading",
+      "default": "About Us"
+    },
+    {
+      "type": "richtext",
+      "id": "text_1",
+      "label": "About Text",
+      "default": "<p>We provide high-quality home essentials for your daily needs.</p>"
+    },
+    {
+       "type": "link_list",
+       "id": "menu",
+       "label": "Footer Menu",
+       "default": "footer"
+    },
+    {
+      "type": "text",
+      "id": "contact_text",
+      "label": "Contact Info",
+      "default": "support@homecomfort.com"
+    }
+  ]
+}
+{% endschema %}

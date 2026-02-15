@@ -1,0 +1,114 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "HomeComfort",
+    "theme_author": "Antigravity",
+    "theme_version": "1.0.0",
+    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_bg",
+        "label": "Background",
+        "default": "#FDFBF7"
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary Accent",
+        "default": "#84A98C"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Secondary Accent",
+        "default": "#52796F"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text",
+        "default": "#354F52"
+      },
+      {
+        "type": "color",
+        "id": "color_heading",
+        "label": "Headings",
+        "default": "#2F3E46"
+      },
+      {
+        "type": "color",
+        "id": "color_link",
+        "label": "Links",
+        "default": "#52796F"
+      },
+      {
+        "type": "color",
+        "id": "color_border",
+        "label": "Borders",
+        "default": "#CAD2C5"
+      },
+       {
+        "type": "color",
+        "id": "color_button_text",
+        "label": "Button Text",
+        "default": "#FFFFFF"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "type_header_font",
+        "label": "Heading Font",
+        "default": "serif"
+      },
+       {
+        "type": "font_picker",
+        "id": "type_body_font",
+        "label": "Body Font",
+        "default": "sans-serif"
+      },
+      {
+        "type": "range",
+        "id": "type_header_base_size",
+        "min": 12,
+        "max": 48,
+        "step": 1,
+        "unit": "px",
+        "label": "Heading Base Size",
+        "default": 32
+      },
+      {
+        "type": "range",
+        "id": "type_body_base_size",
+        "min": 12,
+        "max": 24,
+        "step": 1,
+        "unit": "px",
+        "label": "Body Base Size",
+        "default": 16
+      }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      {
+        "type": "range",
+        "id": "page_width",
+        "min": 1000,
+        "max": 1600,
+        "step": 100,
+        "unit": "px",
+        "label": "Page Width",
+        "default": 1200
+      }
+    ]
+  }
+]

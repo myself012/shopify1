@@ -1,0 +1,15 @@
+{
+    "name": "home-comfort-theme",
+    "version": "1.0.0",
+    "description": "General Purpose Home Essentials Shopify Theme",
+    "scripts": {
+        "dev": "shopify theme dev",
+        "zip": "powershell Compress-Archive -Path layout, templates, sections, snippets, config, assets, locales -DestinationPath HomeComfort-Theme.zip -Force"
+    },
+    "author": "Antigravity",
+    "license": "ISC",
+    "devDependencies": {
+        "@shopify/cli": "^3.90.1",
+        "@shopify/theme": "^3.58.2"
+    }
+}

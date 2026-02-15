@@ -1,0 +1,149 @@
+{
+    "sections": {
+        "hero": {
+            "type": "hero-banner",
+            "settings": {
+                "heading": "Everything Your Home Needs, In One Place",
+                "subheading": "<p>Discover our curated collection of kitchen, cleaning, storage, and daily essentials.</p>",
+                "button_label": "Shop Now",
+                "button_link": "shopify:\/\/collections\/all",
+                "button_label_2": "Explore Categories",
+                "button_link_2": "#categories"
+            }
+        },
+        "categories": {
+            "type": "multicolumn",
+            "blocks": {
+                "kitchen": {
+                    "type": "column",
+                    "settings": {
+                        "title": "Kitchen Essentials",
+                        "text": "<p>Cookware, utensils, and innovative gadgets.</p>",
+                        "link_label": "Shop Kitchen",
+                        "link": "shopify:\/\/collections\/kitchen"
+                    }
+                },
+                "cleaning": {
+                    "type": "column",
+                    "settings": {
+                        "title": "Cleaning Supplies",
+                        "text": "<p>Mops, cleaners, and hygiene products.</p>",
+                        "link_label": "Shop Cleaning",
+                        "link": "shopify:\/\/collections\/cleaning"
+                    }
+                },
+                "storage": {
+                    "type": "column",
+                    "settings": {
+                        "title": "Storage & Organizers",
+                        "text": "<p> declutter your space with smart solutions.</p>",
+                        "link_label": "Shop Storage",
+                        "link": "shopify:\/\/collections\/storage"
+                    }
+                }
+            },
+            "block_order": [
+                "kitchen",
+                "cleaning",
+                "storage"
+            ],
+            "settings": {
+                "title": "Shop by Category",
+                "columns_desktop": 3
+            }
+        },
+        "featured_products": {
+            "type": "featured-collection",
+            "settings": {
+                "title": "Best Sellers",
+                "collection": "frontpage",
+                "products_to_show": 4
+            }
+        },
+        "why_choose_us": {
+            "type": "multicolumn",
+            "blocks": {
+                "affordable": {
+                    "type": "column",
+                    "settings": {
+                        "title": "Affordable Prices",
+                        "text": "<p>High quality products at prices that fit family budgets.</p>"
+                    }
+                },
+                "fast_delivery": {
+                    "type": "column",
+                    "settings": {
+                        "title": "Fast Delivery",
+                        "text": "<p>Get your essentials delivered to your doorstep quickly.</p>"
+                    }
+                },
+                "easy_returns": {
+                    "type": "column",
+                    "settings": {
+                        "title": "Easy Returns",
+                        "text": "<p>Hassle-free returns if you are not satisfied.</p>"
+                    }
+                }
+            },
+            "block_order": [
+                "affordable",
+                "fast_delivery",
+                "easy_returns"
+            ],
+            "settings": {
+                "title": "Why Choose HomeComfort?",
+                "columns_desktop": 3
+            }
+        },
+        "testimonials": {
+            "type": "multicolumn",
+            "blocks": {
+                "test_1": {
+                    "type": "column",
+                    "settings": {
+                        "title": "Sarah M.",
+                        "text": "<p>\"Love the quality of the kitchen organizers. My pantry looks amazing now!\"</p>"
+                    }
+                },
+                "test_2": {
+                    "type": "column",
+                    "settings": {
+                        "title": "Rahul K.",
+                        "text": "<p>\"Fast delivery and good prices. Will definitely order again.\"</p>"
+                    }
+                },
+                "test_3": {
+                    "type": "column",
+                    "settings": {
+                        "title": "Priya S.",
+                        "text": "<p>\"The cleaning supplies are effective and safe for my kids. Recommended!\"</p>"
+                    }
+                }
+            },
+            "block_order": [
+                "test_1",
+                "test_2",
+                "test_3"
+            ],
+            "settings": {
+                "title": "What Our Customers Say",
+                "columns_desktop": 3
+            }
+        },
+        "newsletter": {
+            "type": "newsletter",
+            "settings": {
+                "heading": "Join Our Family",
+                "text": "<p>Subscribe for exclusive deals, new arrivals, and home tips.</p>"
+            }
+        }
+    },
+    "order": [
+        "hero",
+        "categories",
+        "featured_products",
+        "why_choose_us",
+        "testimonials",
+        "newsletter"
+    ]
+}

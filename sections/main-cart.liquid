@@ -1,0 +1,91 @@
+<div class="page-width section-cart">
+  <h1 class="title h2 text-center">Your Cart</h1>
+  
+  {%- if cart.item_count > 0 -%}
+    <form action="{{ routes.cart_url }}" method="post" id="cart">
+      <div class="cart__items">
+        <div class="cart__header grid grid--4-col hidden-mobile">
+            <div>Product</div>
+            <div>Quantity</div>
+            <div>Total</div>
+        </div>
+        
+        {%- for item in cart.items -%}
+          <div class="cart__item grid grid--4-col">
+            <div class="cart__item-product">
+                {% if item.image %}
+                  <img src="{{ item.image | image_url: width: 100 }}" alt="{{ item.title | escape }}" class="cart__item-image">
+                {% endif %}
+                <div class="cart__item-details">
+                    <a href="{{ item.url }}" class="h4">{{ item.product.title }}</a>
+                    <p>{{ item.variant.title }}</p>
+                    <p class="price">{{ item.price | money }}</p>
+                </div>
+            </div>
+            
+            <div class="cart__item-quantity">
+                 <input type="number" name="updates[]" value="{{ item.quantity }}" min="0" class="input-field" style="width: 60px;">
+            </div>
+            
+            <div class="cart__item-total">
+                {{ item.final_line_price | money }}
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <div class="cart__footer text-right">
+        <div class="cart__subtotal">
+           <h3 class="h3">Subtotal: {{ cart.total_price | money }}</h3>
+           <p class="caption">Taxes and shipping calculated at checkout</p>
+        </div>
+        
+        <div class="cart__actions">
+           <button type="submit" name="update" class="button button--secondary">Update Cart</button>
+           <button type="submit" name="checkout" class="button button--primary">Checkout</button>
+        </div>
+      </div>
+    </form>
+  {%- else -%}
+    <div class="text-center">
+      <p class="h3">Your cart is empty</p>
+      <a href="{{ routes.all_products_collection_url }}" class="button">Continue Shopping</a>
+    </div>
+  {%- endif -%}
+</div>
+
+<style>
+  .cart__item {
+    border-bottom: 1px solid var(--color-border);
+    padding: 20px 0;
+    align-items: center;
+  }
+  .cart__item-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 15px;
+  }
+  .cart__item-product {
+    display: flex;
+    align-items: center;
+    grid-column: span 2;
+  }
+  .cart__footer {
+    margin-top: 40px;
+  }
+  .cart__actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Cart",
+  "settings": []
+}
+{% endschema %}
