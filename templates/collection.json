@@ -1,0 +1,25 @@
+{
+    "sections": {
+        "banner": {
+            "type": "hero-banner",
+            "settings": {
+                "heading": "Our Products",
+                "subheading": "",
+                "button_label": "",
+                "button_link": ""
+            }
+        },
+        "product-grid": {
+            "type": "featured-collection",
+            "settings": {
+                "title": "All Products",
+                "products_to_show": 12,
+                "show_view_all": false
+            }
+        }
+    },
+    "order": [
+        "banner",
+        "product-grid"
+    ]
+}

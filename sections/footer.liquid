@@ -2,7 +2,7 @@
   <div class="grid grid--4-col">
     <!-- Clean Footer Layout -->
     <div class="footer__content-block">
-      <h2 class="footer__heading h4">{{ section.settings.heading_1 }}</h2>
+      <h2 class="footer__heading h4">{{ section.settings.heading_1 | escape }}</h2>
       <div class="footer__text rte">
         {{ section.settings.text_1 }}
       </div>
@@ -14,7 +14,7 @@
         {%- for link in section.settings.menu.links -%}
           <li>
             <a href="{{ link.url }}" class="link link--text list-menu__item list-menu__item--link">
-              {{ link.title }}
+              {{ link.title | escape }}
             </a>
           </li>
         {%- endfor -%}
@@ -23,16 +23,25 @@
 
     <div class="footer__content-block">
       <h2 class="footer__heading h4">Contact Us</h2>
-      <p>{{ section.settings.contact_text }}</p>
+      <div class="rte">
+           <p>{{ section.settings.contact_text | escape }}</p>
+      </div>
     </div>
 
     <div class="footer__content-block">
       <h2 class="footer__heading h4">Newsletter</h2>
-       <div class="footer__newsletter">
-         <!-- Simple input placeholder -->
-         <input type="email" placeholder="Your email" class="input-field">
-         <button class="button" style="margin-top: 10px;">Subscribe</button>
-       </div>
+      <div class="footer__newsletter">
+        {%- form 'customer', class: 'newsletter-form' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <div class="input-group">
+            <input type="email" name="contact[email]" placeholder="Your email" class="input-field" required>
+            <button type="submit" class="button" style="margin-top: 10px;">Subscribe</button>
+          </div>
+          {%- if form.posted_successfully? -%}
+             <p class="form__message form__message--success">Thanks for subscribing!</p>
+          {%- endif -%}
+        {%- endform -%}
+      </div>
     </div>
   </div>
   
@@ -47,6 +56,8 @@
   .footer {
     border-top: 1px solid var(--color-border);
     margin-top: 60px;
+    padding-top: 40px;
+    padding-bottom: 40px;
     background-color: #f9f9f9;
   }
   .footer__heading {
@@ -55,6 +66,10 @@
   }
   .footer__list-menu li {
     margin-bottom: 10px;
+    list-style: none;
+  }
+  .footer__list-menu {
+      padding: 0;
   }
   .footer__content-bottom {
     border-top: 1px solid var(--color-border);

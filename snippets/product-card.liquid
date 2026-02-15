@@ -2,8 +2,6 @@
     Renders a product card
     Accepts:
     - product: {Object} Product Liquid object
-    - show_secondary_image: {Boolean} Show the secondary image on hover. Default: false
-    - show_vendor: {Boolean} Show the product vendor. Default: false
 {% endcomment %}
 
 <div class="card-wrapper">
@@ -12,15 +10,12 @@
       <div class="card__image-wrapper">
         <a href="{{ product.url }}" class="full-unstyled-link">
           {%- if product.featured_media -%}
-            <img
-              srcset="{{ product.featured_media | image_url: width: 533 }}"
-              src="{{ product.featured_media | image_url: width: 533 }}"
-              sizes="(min-width: 1200px) 267px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
-              loading="lazy"
-              class="motion-reduce card__image"
-              width="{{ product.featured_media.width }}"
-              height="{{ product.featured_media.height }}"
-            >
+            {{ product.featured_media | image_url: width: 533 | image_tag: 
+                class: 'card__image motion-reduce',
+                loading: 'lazy',
+                widths: '165, 360, 533, 720, 940, 1066',
+                sizes: '(min-width: 1200px) 267px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)'
+            }}
           {%- else -%}
             {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
           {%- endif -%}
@@ -35,11 +30,6 @@
           </a>
         </h3>
         <div class="card-information">
-          {%- if show_vendor -%}
-            <span class="visually-hidden">Vendor:</span>
-            <div class="caption-with-letter-spacing light">{{ product.vendor }}</div>
-          {%- endif -%}
-
           <div class="price">
             <span class="price-item price-item--regular">
               {{ product.price | money }}
@@ -47,12 +37,9 @@
           </div>
         </div>
       </div>
-      <div class="card__badge bottom left">
-        <span class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}">Sold out</span>
-      </div>
       <form method="post" action="/cart/add">
         <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
-        <button type="submit" class="button button--full-width button--secondary">Add to Cart</button>
+        <button type="submit" class="button button--full-width button--secondary" style="margin-top: 10px;">Add to Cart</button>
       </form>
     </div>
   </div>

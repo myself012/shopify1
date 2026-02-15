@@ -1,4 +1,4 @@
-<section class="page-width section-product">
+<section class="page-width section-product" style="padding-top: 40px;">
   <div class="grid grid--2-col grid--1-col-tablet-down">
     
     <!-- Product Gallery -->
@@ -6,9 +6,9 @@
       <div class="product__media-list">
         {%- if product.selected_or_first_available_variant.featured_media != null -%}
           {%- assign featured_media = product.selected_or_first_available_variant.featured_media -%}
-           <img src="{{ featured_media | image_url: width: 1000 }}" alt="{{ featured_media.alt | escape }}" class="product__main-image">
+          {{ featured_media | image_url: width: 1000 | image_tag: class: 'product__main-image' }}
         {%- else -%}
-           <img src="{{ product.featured_media | image_url: width: 1000 }}" alt="{{ product.featured_media.alt | escape }}" class="product__main-image">
+          {{ product.featured_media | image_url: width: 1000 | image_tag: class: 'product__main-image' }}
         {%- endif -%}
       </div>
     </div>
@@ -33,7 +33,7 @@
         {%- form 'product', product -%}
           <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
           
-          <div class="product-form__buttons">
+          <div class="product-form__buttons" style="margin-top: 20px;">
             <button type="submit" name="add" class="button button--full-width button--primary"
             {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}>
               {% if product.selected_or_first_available_variant.available %}

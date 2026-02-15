@@ -1,8 +1,8 @@
-<div class="header-wrapper">
+<div class="header-wrapper" data-section-id="{{ section.id }}" data-section-type="header">
   <!-- Announcement Bar -->
   {%- if section.settings.show_announcement -%}
-    <div class="announcement-bar">
-      <p class="announcement-bar__message">{{ section.settings.announcement_text }}</p>
+    <div class="announcement-bar" style="background-color: {{ section.settings.announcement_bg }}; color: {{ section.settings.announcement_text_color }};">
+      <p class="announcement-bar__message">{{ section.settings.announcement_text | escape }}</p>
     </div>
   {%- endif -%}
 
@@ -20,12 +20,14 @@
     <h1 class="header__heading">
       <a href="{{ routes.root_url }}" class="header__heading-link">
         {%- if section.settings.logo != blank -%}
-          <img src="{{ section.settings.logo | image_url: width: section.settings.logo_width }}"
-            alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
-            loading="eager"
-            width="{{ section.settings.logo_width }}"
-            height="{{ section.settings.logo_width | divided_by: section.settings.logo.aspect_ratio }}"
-          >
+          {%- assign logo_height = section.settings.logo_width | divided_by: section.settings.logo.aspect_ratio -%}
+          {{ section.settings.logo | image_url: width: section.settings.logo_width | image_tag:
+            class: 'header__heading-logo',
+            widths: '50, 100, 150, 200, 250, 300',
+            height: logo_height,
+            width: section.settings.logo_width,
+            alt: section.settings.logo.alt | default: shop.name
+          }}
         {%- else -%}
           <span class="h2">{{ shop.name }}</span>
         {%- endif -%}
@@ -100,8 +102,6 @@
     background: #fff;
   }
   .announcement-bar {
-    background-color: var(--color-secondary);
-    color: #fff;
     text-align: center;
     padding: 8px 0;
     font-size: 0.9rem;
@@ -189,6 +189,7 @@
   .mobile-menu__nav ul {
       list-style: none;
       padding: 0;
+      margin: 0;
   }
   .mobile-menu__item {
       display: block;
@@ -222,6 +223,18 @@
       "id": "announcement_text",
       "label": "Announcement Text",
       "default": "Free Shipping on All Orders Over $50!"
+    },
+    {
+      "type": "color",
+      "id": "announcement_bg",
+      "label": "Announcement Background",
+      "default": "#52796F"
+    },
+    {
+        "type": "color",
+        "id": "announcement_text_color",
+        "label": "Announcement Text Color",
+        "default": "#FFFFFF"
     },
     {
       "type": "image_picker",

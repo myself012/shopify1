@@ -22,11 +22,27 @@
     {{ content_for_header }}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'component-cart-drawer.css' | asset_url | stylesheet_tag }}
     
     <style>
       :root {
         --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
         --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+        
+        --color-bg: {{ settings.color_bg }};
+        --color-primary: {{ settings.color_primary }};
+        --color-secondary: {{ settings.color_secondary }};
+        --color-text: {{ settings.color_text }};
+        --color-heading: {{ settings.color_heading }};
+        --color-link: {{ settings.color_link }};
+        --color-border: {{ settings.color_border }};
+        --color-button-text: {{ settings.color_button_text }};
+        
+        --page-width: {{ settings.page_width }}px;
+        --spacing-unit: 8px;
+        --border-radius: 12px;
+        --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.05);
+        --shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.08);
       }
     </style>
   </head>

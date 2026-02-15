@@ -1,12 +1,13 @@
-<div class="featured-collection section page-width">
+<div class="featured-collection section page-width" style="margin-top: {{ section.settings.spacing_top }}px; margin-bottom: {{ section.settings.spacing_bottom }}px;">
   <div class="title-wrapper center">
     {%- if section.settings.title != blank -%}
-      <h2 class="title h2">{{ section.settings.title }}</h2>
+      <h2 class="title h2">{{ section.settings.title | escape }}</h2>
     {%- endif -%}
   </div>
 
   <div class="grid grid--4-col grid--2-col-tablet-down">
-    {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
+    {%- assign collection = collections[section.settings.collection] -%}
+    {%- for product in collection.products limit: section.settings.products_to_show -%}
         {% render 'product-card', product: product %}
     {%- else -%}
       {%- for i in (1..4) -%}
@@ -19,7 +20,7 @@
                 </div>
                 <div class="card__content">
                     <h3>Example Product {{ i }}</h3>
-                    <p>$19.99</p>
+                    <div class="price">$19.99</div>
                 </div>
              </div>
         </div>
@@ -27,9 +28,9 @@
     {%- endfor -%}
   </div>
   
-  {%- if section.settings.show_view_all -%}
+  {%- if section.settings.show_view_all and collection.all_products_count > section.settings.products_to_show -%}
     <div class="center" style="margin-top: 40px;">
-      <a href="{{ section.settings.collection.url }}" class="button">View All</a>
+      <a href="{{ collection.url }}" class="button">View All</a>
     </div>
   {%- endif -%}
 </div>
@@ -63,6 +64,26 @@
       "id": "show_view_all",
       "label": "Enable \"View all\" button",
       "default": true
+    },
+    {
+        "type": "range",
+        "id": "spacing_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Top Spacing",
+        "default": 36
+    },
+    {
+        "type": "range",
+        "id": "spacing_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "Bottom Spacing",
+        "default": 36
     }
   ],
   "presets": [

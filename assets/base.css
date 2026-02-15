@@ -1,28 +1,9 @@
-:root {
-  --color-bg: {{ settings.color_bg }};
-  --color-primary: {{ settings.color_primary }};
-  --color-secondary: {{ settings.color_secondary }};
-  --color-text: {{ settings.color_text }};
-  --color-heading: {{ settings.color_heading }};
-  --color-link: {{ settings.color_link }};
-  --color-border: {{ settings.color_border }};
-  --color-button-text: {{ settings.color_button_text }};
-
-  --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
-  --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
-  
-  --font-heading-size: {{ settings.type_header_base_size }}px;
-  --font-body-size: {{ settings.type_body_base_size }}px;
-
-  --page-width: {{ settings.page_width }}px;
-  --spacing-unit: 8px;
-  --border-radius: 12px;
-  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.05);
-  --shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.08);
-}
+/* Base CSS variables are now in theme.liquid :root for dynamic updates */
 
 /* Reset & Base */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -35,7 +16,12 @@ body {
   line-height: 1.6;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading-family);
   color: var(--color-heading);
   margin-top: 0;
@@ -71,12 +57,23 @@ img {
   gap: calc(var(--spacing-unit) * 4);
 }
 
-.grid--2-col { grid-template-columns: repeat(2, 1fr); }
-.grid--3-col { grid-template-columns: repeat(3, 1fr); }
-.grid--4-col { grid-template-columns: repeat(4, 1fr); }
+.grid--2-col {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--3-col {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--4-col {
+  grid-template-columns: repeat(4, 1fr);
+}
 
 @media screen and (max-width: 768px) {
-  .grid--2-col, .grid--3-col, .grid--4-col {
+
+  .grid--2-col,
+  .grid--3-col,
+  .grid--4-col {
     grid-template-columns: 1fr;
   }
 }
@@ -94,12 +91,14 @@ img {
   border: none;
   transition: all 0.3s ease;
   box-shadow: var(--shadow-soft);
+  text-decoration: none;
 }
 
 .button:hover {
   background-color: var(--color-secondary);
   box-shadow: var(--shadow-hover);
   transform: translateY(-2px);
+  color: var(--color-button-text);
 }
 
 .button--secondary {
@@ -114,14 +113,15 @@ img {
 }
 
 .input-group {
-    display: flex;
-    gap: var(--spacing-unit);
+  display: flex;
+  gap: var(--spacing-unit);
 }
+
 .input-field {
-    padding: calc(var(--spacing-unit) * 1.5);
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius);
-    width: 100%;
+  padding: calc(var(--spacing-unit) * 1.5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  width: 100%;
 }
 
 /* Sections */
@@ -141,6 +141,7 @@ img {
   box-shadow: var(--shadow-soft);
   transition: transform 0.3s ease;
   border: 1px solid var(--color-border);
+  height: 100%;
 }
 
 .card:hover {
@@ -150,7 +151,9 @@ img {
 
 .card__image-wrapper {
   position: relative;
-  padding-bottom: 100%; /* Square aspect ratio */
+  padding-bottom: 100%;
+  /* Square aspect ratio */
+  background: #f4f4f4;
 }
 
 .card__image {
@@ -167,13 +170,37 @@ img {
 }
 
 /* Utilities */
-.text-center { text-align: center; }
-.text-right { text-align: right; }
-.hidden { display: none; }
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.center {
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
 .visually-hidden {
   position: absolute;
   clip: rect(0 0 0 0);
   width: 1px;
   height: 1px;
   margin: -1px;
+  overflow: hidden;
+}
+
+.hidden-mobile {
+  display: block;
+}
+
+@media screen and (max-width: 768px) {
+  .hidden-mobile {
+    display: none !important;
+  }
 }

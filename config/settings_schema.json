@@ -3,7 +3,7 @@
     "name": "theme_info",
     "theme_name": "HomeComfort",
     "theme_author": "Antigravity",
-    "theme_version": "1.0.0",
+    "theme_version": "2.0.0",
     "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes"
   },
   {
@@ -51,7 +51,7 @@
         "label": "Borders",
         "default": "#CAD2C5"
       },
-       {
+      {
         "type": "color",
         "id": "color_button_text",
         "label": "Button Text",
@@ -68,7 +68,7 @@
         "label": "Heading Font",
         "default": "serif"
       },
-       {
+      {
         "type": "font_picker",
         "id": "type_body_font",
         "label": "Body Font",
@@ -108,6 +108,17 @@
         "unit": "px",
         "label": "Page Width",
         "default": 1200
+      }
+    ]
+  },
+  {
+    "name": "Product Badges",
+    "settings": [
+      {
+        "type": "text",
+        "id": "sold_out_badge_color_scheme",
+        "label": "Sold Out Badge Scheme",
+        "default": "accent-1"
       }
     ]
   }
